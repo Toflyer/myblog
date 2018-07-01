@@ -3,7 +3,6 @@
 		<div v-for="o in myblog" id='text_'>
 			<el-card class="box-card">
 				<div slot="header" class="clearfix">
-					<!--<router-link :to='{path:"/mytextdetail",query:{id:o.id}}'>-->
 					<router-link :to='{path:"/mytextdetail",query:{id:o.id}}'>
 						<span :id_card='o.id'>{{o.title}}</span>
 					</router-link>
@@ -11,7 +10,6 @@
 				<div class="text item">
 					<i class="el-icon-edit"></i>
 					<span>{{o.date}}</span>
-
 				</div>
 				<div class="text item" id="mycontext">
 					{{o.context}}
@@ -33,20 +31,17 @@
 			//清求文章数据
 			var this_ = this;
 			this.$http.get('/api/other.html', {
-
+				//传递参数
 			}).then(function(res) {
 				this_.myblog = res.data;
+				//处理文章的内容
 				for(var i = 0; i < this_.myblog.length; i++) {
 					this_.myblog[i].context = this_.myblog[i].context.slice(0, 200) + '...'
 				}
-				
 				this_.$store.dispatch('hideLoading');
-				
 			}).catch(function(err) {
 				console.log(err);
 			})
-			//处理文章的内容
-
 		},
 		methods: {
 		},

@@ -12,17 +12,15 @@
 
 <style>
 	#footer #footer_ {
-		padding: 20px 15% 20px 15%;
-		height: 40px;
+		margin-top: 10px;
+		padding: 10px 15% 10px 15%;
 		border-top: 1px solid #eeeeee;
 		background-color: #f8f8f8;
 	}
-	
 	#footer #footer_ p {
 		font-size: 12px;
 		opacity: 0.6;
 	}
-	
 	@media screen and (max-width: 768px) {
 		#footer #footer_ {
 			margin-top:50px;

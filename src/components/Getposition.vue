@@ -1,10 +1,8 @@
 <template>
 	<div id="position">
 		<Header></Header>
-		<div id="container">
-		</div>
-		<div id="black_bgc" v-show='isshow'>
-		</div>
+		<div id="container"></div>
+		<div id="black_bgc" v-show='isshow'></div>
 		<div id='p' v-show='isshow'>
 			定位中请稍后...(手机用户定位信息会不准确！)
 		</div>
@@ -12,9 +10,9 @@
 </template>
 <script>
 	import {mapGetters} from 'vuex'
-	import Header from './header'
+	import Header from './Header'
 	import BMap from 'BMap'
-	import Footer from './footer'
+	import Footer from './Footer'
 	export default {
 		computed:mapGetters([
 			'isshow'
@@ -52,7 +50,6 @@
 				loading: true
 			}
 		}
-
 	}
 </script>
 
@@ -74,7 +71,6 @@
 		margin-top:50px; 
 		z-index: 99999;
 	}
-	
 	#position #container {
 		height: 800px;
 	}

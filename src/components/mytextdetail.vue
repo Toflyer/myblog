@@ -19,7 +19,6 @@
 						<div id="footer">
 							<div id="footer_left" v-if="myblog[key-1]" @click="previous_(100)">
 								<{{myblog[key-1].title}}</div>
-
 									<div id="footer_right" v-if="myblog[key+1]" @click="next_(100)">{{myblog[key+1].title}}></div>
 							</div>
 					</el-card>
@@ -31,8 +30,8 @@
 </template>
 
 <script>
-	import Footer from './footer'
-	import Header from './header'
+	import Footer from './Footer'
+	import Header from './Header'
 	import { mapGetters } from 'vuex'
 	export default {
 		computed: mapGetters([
@@ -51,18 +50,16 @@
 				window.onresize = function() {
 					debounce(lazyload, window);
 				};
-
 				function debounce(method, context) {
 					clearTimeout(method.timeout);
 					method.timeout = setTimeout(function() {
 						method.call(context);
 					}, 100);
 				}
-
 				function lazyload() {
 					that.resize();
 				}
-				//最简单的异步实现，等待元素的样式attach之后在进行取和重置
+				//简单的异步实现，等待元素的样式attach之后在进行取和重置
 				setTimeout(function() {
 					that.resize();
 					var height = $("#" + that.id_).outerHeight();
@@ -93,7 +90,6 @@
 			previous_(id) {
 				if(id == 100) {
 					id = 1;
-					console.log(this.id_);
 					var newnumber = this.id_ - 1;
 					this.id_ = newnumber;
 					var height = $("#" + newnumber).outerHeight();
@@ -104,7 +100,6 @@
 				var marginleft = parseInt($('#root').css('margin-left'));
 				var new_ = marginleft + left;
 				var new__ = new_ + 'px'
-
 				$('#root').css('margin-left', new__);
 				window.scrollTo(0, 0);
 			},
@@ -134,11 +129,11 @@
 				var height = window.innerHeight;
 				var width = parseInt(window.innerWidth);
 				var root_width = width * (-this.id_) + 'px';
+				//对pc和手机的自适应
 				if(this.ispc){
 					var card_width = width * 0.7 + 'px';
 					var card_left = width * 0.15 + 'px';
 					var card_right = width * 0.15 + 'px';
-
 					$("#mytextdetail .box-card").css('opacity', '0');
 					setTimeout(function() {
 						$("#mytextdetail .box-card").css('opacity', '1');
@@ -149,20 +144,16 @@
 					var card_width = width * 0.9 + 'px';
 					var card_left = width * 0.05 + 'px';
 					var card_right = width * 0.05 + 'px';
-
+					//简单的异步实现，等待元素的样式attach之后在进行取和重置
 					setTimeout(function() {
 						var height = $("#" + that.id_).outerHeight(true);
 						$("#root").css('height', height);
 					}, 500)
 				}
-				
-			
-				
 				$("#mytextdetail .box-card").css('width', card_width);
 				$("#mytextdetail .box-card").css('margin-left', card_left);
 				$("#mytextdetail .box-card").css('margin-right', card_right);
 				$("#root").css('margin-left', root_width);
-
 			}
 		},
 		components: {
@@ -251,6 +242,7 @@
 		margin: 20px auto;
 		padding: 20px 0 20px 0;
 		top: 20px;
+		border: 0;
 	}
 	
 	#mytextdetail .animated {

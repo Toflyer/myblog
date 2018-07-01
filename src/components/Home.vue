@@ -8,10 +8,10 @@
 </template>
 
 <script>
-	import Header from './header'
+	import Header from './Header'
 	import Sowingmap from './Sowingmap'
 	import Mytext from './Mytext'
-	import Footer from './footer'
+	import Footer from './Footer'
 	import { mapGetters } from 'vuex'
 	export default{
 		components:{
@@ -19,10 +19,7 @@
 		},
 		computed:mapGetters([
 			'isshow'
-		]),
-		mounted(){
-
-		}
+		])
 	}
 </script>
 

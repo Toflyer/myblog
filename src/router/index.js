@@ -1,28 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
-
-/*
-import header from '@/components/header'
-import Home from '@/components/Home'
-import translate from '@/components/translate'
-import getPosition from '@/components/Getposition'
-import leavemessage from '@/components/Leavemessage'
-import mytextdetail from '@/components/mytextdetail'
-import resume from '@/components/resume'
-
-*/
-/*var header = r => require.ensure([], () => r(require('@/components/header')), "header");
-var Home = r => require.ensure([], () => r(require('@/components/Home')), "Home");
-var translate = r => require.ensure([], () => r(require('@/components/translate')), "translate");
-var getPosition = r => require.ensure([], () => r(require('@/components/getPosition')), "getPosition");
-var leavemessage = r => require.ensure([], () => r(require('@/components/leavemessage')), "leavemessage");
-var mytextdetail = r => require.ensure([], () => r(require('@/components/mytextdetail')), "mytextdetail");
-var resume = r => require.ensure([], () => r(require('@/components/resume')), "resume");
-
-*/
 Vue.use(Router)
-
 export default new Router({
 	mode: 'history',
 	scrollBehavior(to, from, savedPosition) {
@@ -37,7 +15,7 @@ export default new Router({
 			component: resolve=>require(['@/components/Home'],resolve)
 		}, {
 			path: '/translate',
-			component: resolve=>require(['@/components/translate'],resolve)
+			component: resolve=>require(['@/components/Translate'],resolve)
 		},
 		{
 			path: '/getposition',
@@ -47,11 +25,11 @@ export default new Router({
 			component: resolve=>require(['@/components/Leavemessage'],resolve)
 		}, {
 			path: '/mytextdetail',
-			component: resolve=>require(['@/components/mytextdetail'],resolve)
+			component: resolve=>require(['@/components/Mytextdetail'],resolve)
 		}, 
 		{
 			path: '/resume',
-			component: resolve=>require(['@/components/resume'],resolve)
+			component: resolve=>require(['@/components/Resume'],resolve)
 		}
 	]
 })

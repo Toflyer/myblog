@@ -16,6 +16,7 @@
 
 <script>
 	export default {
+		//改动Element-UI的走马灯，使之成为一个自适应的走马灯
 		mounted() {
 			this.screenWidth = $(window).width();
 			this.bannerHeight = 1500 / 2560 * this.screenWidth

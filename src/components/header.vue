@@ -35,9 +35,6 @@
 		computed :mapGetters([
 			'isplay'
 		]),
-		created(){
-			
-		},
 		mounted() {
 			if(this.isplay == true){
 				//取消动画
@@ -48,11 +45,6 @@
 			}else{
 				//正常播放
 				this.$store.dispatch('played');
-			}
-		},
-		data() {
-			return {
-			
 			}
 		}
 	}

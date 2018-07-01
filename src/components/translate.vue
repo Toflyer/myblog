@@ -30,16 +30,10 @@
 </template>
 
 <script>
-	import Footer from './footer'
-	import Header from './header'
+	import Footer from './Footer'
+	import Header from './Header'
 	import $ from 'jquery'
 	export default {
-		mounted() {
-			/*const s = document.createElement('script');
-			s.type = '../assets/md5.js';
-			s.src = '你的需要的js文件地址';
-			document.body.appendChild(s);*/
-		},
 		data() {
 			return {
 				appid: '20180614000176527',
@@ -69,7 +63,6 @@
 			submit() {
 				var transition_place = document.getElementById('translation');
 				var my_q = document.getElementById('q');
-				/*var q = encodeURIComponent(my_q.value);*/
 				var q = my_q.value;
 				var lang_ = document.getElementById('lang');
 				var to = '';
@@ -105,12 +98,10 @@
 						transition_place.innerHTML = result;
 					}
 				});
-
 			}
 		},
 		components: {
 			Header,
-/*			Footer*/
 		}
 	}
 </script>

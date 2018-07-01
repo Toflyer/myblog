@@ -74,16 +74,13 @@
 </template>
 
 <script>
-	import Footer from './footer'
-	import Header from './header'
+	import Footer from './Footer'
+	import Header from './Header'
 	export default {
 		mounted() {},
 		components: {
 			Header,
 			Footer
-		},
-		methods: {
-
 		}
 	}
 </script>
@@ -128,14 +125,6 @@
 	}
 	
 	@keyframes resume_animate {
-		/*from{
-			transform: translateX(-15px);
-			opacity: 0;
-		}
-		to{
-			transform: translateX(0px);
-			opacity: 1;
-		}*/
 		0% {
 			opacity: 0;
 			-webkit-transform: translateY(-2000px);

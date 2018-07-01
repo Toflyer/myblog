@@ -3,9 +3,7 @@
 		<Header></Header>
 		<div id="leavemessage">
 			<p id="Leave">Leaving a message！</p>
-
 			<el-input id="my_input" placeholder="请输入内容" type="textarea"></el-input>
-
 			<div id="leaver_info">
 				<el-input class='leaver_info_input_left' id='Leave_name' placeholder="请输入你的昵称"></el-input>
 				<el-input class='leaver_info_input_right' placeholder="请输入你的邮箱(不公开)"></el-input>
@@ -13,7 +11,6 @@
 			<div id="submit">
 				<el-button type="success" @click='upmessage'>确认回复</el-button>
 			</div>
-
 			<div id='user_block' v-for="o in user_leavemessage">
 				<el-card class="box-card" shadow='hover'>
 					<div slot="header" class="clearfix">
@@ -25,7 +22,6 @@
 						{{o.context}}
 					</div>
 				</el-card>
-
 			</div>
 		</div>
 		<Footer></Footer>
@@ -33,8 +29,8 @@
 </template>
 
 <script>
-	import Footer from './footer'
-	import Header from './header'
+	import Footer from './Footer'
+	import Header from './Header'
 	export default {
 		mounted() {
 			var this_ = this;
@@ -97,7 +93,6 @@
 					console.log(res.data);
 					this_.user_leavemessage = res.data.reverse();
 					this_.$store.dispatch('hideLoading');
-
 				}).catch(function(err) {
 					console.log(err);
 				})
@@ -106,9 +101,7 @@
 		},
 		data() {
 			return {
-				user_leavemessage: [
-
-				]
+				user_leavemessage: []
 			}
 		},
 		components: {
@@ -152,12 +145,6 @@
 		display: inline-block;
 		width: 40%;
 	}
-	/*.el-input {
-		margin-top: 20px;
-		display: inline-block;
-		width: 40%;
-	}*/
-	
 	#Leave {
 		font-size: 30px;
 		margin-bottom: 20px;
@@ -202,7 +189,6 @@
 			padding-left: 10px;
 		}
 	}
-	
 	@keyframes leave_animate {
 		from {
 			opacity: 0;
