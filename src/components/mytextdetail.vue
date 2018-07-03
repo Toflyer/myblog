@@ -38,24 +38,25 @@
 			'isshow'
 		]),
 		mounted() {
-			this.ispc = this.IsPC(); 
+			this.ispc = this.IsPC();
 			var that = this;
 			this.id_ = parseInt(this.$route.query.id);
 			this.$store.dispatch('showLoading');
 			this.$http.get('/api/other.html', {}).then(function(res) {
 				that.myblog = res.data;
 				that.resize();
-				that.next_(that.id_);
 				//对onresize进行优化
 				window.onresize = function() {
 					debounce(lazyload, window);
 				};
+
 				function debounce(method, context) {
 					clearTimeout(method.timeout);
 					method.timeout = setTimeout(function() {
 						method.call(context);
 					}, 100);
 				}
+
 				function lazyload() {
 					that.resize();
 				}
@@ -71,7 +72,7 @@
 			})
 		},
 		methods: {
-		    IsPC() {
+			IsPC() {
 				var userAgentInfo = navigator.userAgent;
 				var Agents = ["Android", "iPhone",
 					"SymbianOS", "Windows Phone",
@@ -95,19 +96,17 @@
 					var height = $("#" + newnumber).outerHeight();
 					$("#root").css('height', height);
 				}
-				var height = window.innerWidth;
-				var left = height;
-				var marginleft = parseInt($('#root').css('margin-left'));
-				var new_ = marginleft + left;
-				var new__ = new_ + 'px'
-				$('#root').css('margin-left', new__);
+				var screen_width = window.innerWidth;
+				var marginleft =  parseInt($('#root').css('transform').substring(7).split(',')[4]);
+				var new_ = marginleft + screen_width;
+				var new__ = new_ + 'px';
+				$('#root').css('transform','translate('+new__+', 0)');
 				window.scrollTo(0, 0);
 			},
 			//下一个
 			next_(id) {
 				if(id == 100) {
 					id = 1;
-					console.log(this.id_);
 					var newnumber = this.id_ + 1;
 					this.id_ = newnumber;
 					var height = $("#" + newnumber).outerHeight();
@@ -116,12 +115,12 @@
 				if(id == 0) {
 					id = 0;
 				}
-				var height = window.innerWidth;
-				var left = height;
-				var marginleft = parseInt($('#root').css('margin-left'));
-				var new_ = marginleft - left * id;
-				var new__ = new_ + 'px';
-				$('#root').css('margin-left', new__);
+				var screen_width = window.innerWidth;
+				var marginleft = $('#root').css('transform').substring(7).split(',')[4];
+				var new_ = marginleft - screen_width * id;
+				var new__ = new_+'px';
+				$('#root').css('transform','translate('+new__+', 0)');	
+				var translateX = $('#root').css('transform').substring(7).split(',')[4];	
 				window.scrollTo(0, 0);
 			},
 			resize() {
@@ -130,7 +129,7 @@
 				var width = parseInt(window.innerWidth);
 				var root_width = width * (-this.id_) + 'px';
 				//对pc和手机的自适应
-				if(this.ispc){
+				if(this.ispc) {
 					var card_width = width * 0.7 + 'px';
 					var card_left = width * 0.15 + 'px';
 					var card_right = width * 0.15 + 'px';
@@ -140,7 +139,7 @@
 						var height = $("#" + that.id_).outerHeight(true);
 						$("#root").css('height', height);
 					}, 500)
-				}else{
+				} else {
 					var card_width = width * 0.9 + 'px';
 					var card_left = width * 0.05 + 'px';
 					var card_right = width * 0.05 + 'px';
@@ -153,7 +152,7 @@
 				$("#mytextdetail .box-card").css('width', card_width);
 				$("#mytextdetail .box-card").css('margin-left', card_left);
 				$("#mytextdetail .box-card").css('margin-right', card_right);
-				$("#root").css('margin-left', root_width);
+				$("#root").css('transform', 'translate('+root_width+', 0)');
 			}
 		},
 		components: {
@@ -162,7 +161,7 @@
 		},
 		data() {
 			return {
-				ispc:'',
+				ispc: '',
 				id_: '',
 				isanimated: true,
 				text_id: '',
@@ -243,12 +242,30 @@
 		padding: 20px 0 20px 0;
 		top: 20px;
 		border: 0;
+		webkit-transform: translate3d(0, 0, 0);
+		-moz-transform: translate3d(0, 0, 0);
+		-ms-transform: translate3d(0, 0, 0);
+		-o-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+		backface-visibility: hidden;
+		-webkit-perspective: 1000;
+		perspective: 1000;
 	}
 	
 	#mytextdetail .animated {
 		animation: test 1s infinite;
 		animation-iteration-count: 1;
 		animation-fill-mode: forwards;
+		webkit-transform: translate3d(0, 0, 0);
+		-moz-transform: translate3d(0, 0, 0);
+		-ms-transform: translate3d(0, 0, 0);
+		-o-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+		backface-visibility: hidden;
+		-webkit-perspective: 1000;
+		perspective: 1000;
+		-webkit-transform-style: preserve-3d;
+		transform-style: preserve-3d;
 	}
 	
 	@keyframes test {
